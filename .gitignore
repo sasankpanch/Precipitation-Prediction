@@ -206,3 +206,8 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 EOF
+
+.DS_Store
+data/
+models/
+.venv/
