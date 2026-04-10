@@ -1,0 +1,10 @@
+data/raw/           stores Original IMERG HDF5/NetCDF files
+data/processed/     stores vectorized Parquet files
+models/             stores model weights
+notebooks/          
+src/data_loader.py  NASA Earthdata API and Parquet data conversion
+src/preprocess.py   Vetorization and scaling fro preprocessing
+src/model.py        Model architexture 
+src/evalute.py      Metrics
+.gitignore          
+requirements/txt    required list of libraries
