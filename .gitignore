@@ -208,6 +208,4 @@ __marimo__/
 EOF
 
 .DS_Store
-data/
-models/
 .venv/
