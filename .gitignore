@@ -209,3 +209,13 @@ EOF
 
 .DS_Store
 .venv/
+data/**/*
+!**/ .gitkeep
+
+*.png
+*.jpg
+*.pdf
+data/raw/
+data/processed/
+data/final_training_set/
+.env

@@ -2,9 +2,46 @@ data/raw/           stores Original IMERG HDF5/NetCDF files
 data/processed/     stores vectorized Parquet files
 models/             stores model weights
 notebooks/          
+predictions2026/    holds model weights 
 src/data_loader.py  NASA Earthdata API and Parquet data conversion
 src/preprocess.py   Vetorization and scaling fro preprocessing
 src/model.py        Model architexture 
 src/evalute.py      Metrics
 .gitignore          
-requirements/txt    required list of libraries
+requirements/txt    required list of libraries and instructions
+
+# Installing venv (recomended):
+macOS:      python3 -m venv .venv
+Windows:    python -m venv .venv
+
+# Activate venv:
+macOS:      source .venv/bin/activate
+Windows:    .venv\Scripts\activate.bat
+
+# Install required libraries:
+python -m pip install --upgrade pip
+pip install xarray netCDF4 h5netcdf dask pandas numpy pyarrow fastparquet torch torchvision xgboost scikit-learn matplotlib seaborn jupyter ipykernel python-dotenv cftime h5py
+
+# daily dataset acess
+https://disc.gsfc.nasa.gov/datasets/GPM_3IMERGDL_07/summary
+
+# Create a .env file to project directory
+# Add file path to .env file, example: 
+DATA_RAW_DIR=./data/raw
+DATA_PROCESSED_DIR=./data/processed
+
+# lattitude and longitude bounds for the Rio Grande Valley (RGV)
+-98.78, 25.61, -96.77, 26.63
+
+
+# To run Data Laoder:
+python src/data_loader.py
+# to run Preprocesser: (expect about 30mins to complete)
+python src/preprocess.py
+# to run model
+python src/model.py
+# to get evaluation results
+python src/evaluate.py
+
+# Removing parquet files:
+rm -rf data/processed/*.parquet data/final_training_set/*.parquet
